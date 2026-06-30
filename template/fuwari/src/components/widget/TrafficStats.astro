@@ -1,5 +1,5 @@
 <div
-	id="traffic-stats"
+	data-traffic-stats
 	class="mb-2 text-center text-sm text-neutral-400"
 	aria-label="Site traffic"
 	aria-live="polite"
@@ -10,11 +10,10 @@
 </div>
 
 <script>
-	const stats = document.querySelector<HTMLElement>("#traffic-stats");
-	const visitors = stats?.querySelector<HTMLElement>("[data-visitors]");
-	const pageviews = stats?.querySelector<HTMLElement>("[data-pageviews]");
+	const statsBlocks =
+		document.querySelectorAll<HTMLElement>("[data-traffic-stats]");
 
-	if (stats && visitors && pageviews) {
+	if (statsBlocks.length > 0) {
 		fetch("/api/traffic", { headers: { Accept: "application/json" } })
 			.then((response) => {
 				if (!response.ok) throw new Error("Traffic API unavailable");
@@ -22,11 +21,17 @@
 			})
 			.then((data) => {
 				const format = new Intl.NumberFormat();
-				visitors.textContent = format.format(data.visitors);
-				pageviews.textContent = format.format(data.pageviews);
+				for (const stats of statsBlocks) {
+					const visitors =
+						stats.querySelector<HTMLElement>("[data-visitors]");
+					const pageviews =
+						stats.querySelector<HTMLElement>("[data-pageviews]");
+					if (visitors) visitors.textContent = format.format(data.visitors);
+					if (pageviews) pageviews.textContent = format.format(data.pageviews);
+				}
 			})
 			.catch(() => {
-				stats.hidden = true;
+				for (const stats of statsBlocks) stats.hidden = true;
 			});
 	}
 </script>
