@@ -37,11 +37,11 @@ if (
 const today = new Date().toISOString().slice(0, 10);
 const title = path.basename(relativeName, ".md");
 const document = `---
-title: ${title}
+title: ${JSON.stringify(title)}
 published: ${today}
-description:
+description: ""
 tags: []
-category: ${typeConfig.category}
+category: ${JSON.stringify(typeConfig.category)}
 draft: true
 lang: en
 ---
