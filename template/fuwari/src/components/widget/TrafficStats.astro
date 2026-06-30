@@ -1,11 +1,13 @@
 <div
 	data-traffic-stats
-	class="mb-2 text-center text-sm text-neutral-400"
+	class="mx-auto mb-4 flex w-fit items-center gap-2 rounded-xl border border-black/5 bg-[var(--card-bg)] px-4 py-2 text-sm shadow-sm dark:border-white/10"
 	aria-label="Site traffic"
 	aria-live="polite"
 >
-	<span data-traffic-status>Loading traffic…</span>
-	<span data-traffic-values hidden>
+	<span class="font-semibold text-[var(--primary)]">Site traffic</span>
+	<span class="text-neutral-300 dark:text-neutral-600" aria-hidden="true">|</span>
+	<span data-traffic-status class="text-neutral-500 dark:text-neutral-400">Loading…</span>
+	<span data-traffic-values class="text-neutral-500 dark:text-neutral-400" hidden>
 		<span data-visitors>—</span> visitors
 		<span aria-hidden="true">·</span>
 		<span data-pageviews>—</span> views
