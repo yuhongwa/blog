@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import { profileConfig } from "../../config";
 import { url } from "../../utils/url-utils";
 import ImageWrapper from "../misc/ImageWrapper.astro";
+import TrafficStats from "./TrafficStats.astro";
 
 const config = profileConfig;
 ---
@@ -34,6 +35,7 @@ const config = profileConfig;
                 {config.links[0].name}
             </a>}
         </div>
+        <TrafficStats />
     </div>
 </div>
 
