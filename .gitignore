@@ -1,31 +1,23 @@
-# build output
+# Generated site
+.site/
+.astro/
 dist/
 
-# generated types
-.astro/
-
-# dependencies
+# Dependencies
 node_modules/
 
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# environment variables
+# Local environment and deployment state
 .env
-.env.production
+.env.*
+!.env.example
+.vercel/
 
-# macOS-specific files
+# Logs and editor files
+*.log
 .DS_Store
-
-.vercel
-
-package-lock.json
-bun.lockb
-yarn.lock
-
-# ide
-.idea
+.idea/
 *.iml
+
+# Interrupted template updates
+template/.update-*/
+template/.fuwari-backup-*/

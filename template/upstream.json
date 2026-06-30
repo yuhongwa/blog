@@ -1,0 +1,6 @@
+{
+  "repository": "https://github.com/saicaca/fuwari.git",
+  "ref": "main",
+  "commit": null,
+  "note": "Imported from the original repository state. Run pnpm template:update after committing this restructure."
+}

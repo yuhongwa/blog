@@ -1,22 +1,14 @@
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "biomejs.biome",
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome"
+  "files.exclude": {
+    ".site": true,
+    "node_modules": true
   },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
+  "search.exclude": {
+    ".site": true,
+    "node_modules": true
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit",
-    "quickfix.biome": "always",
-    "source.organizeImports.biome": "always"
-  },
-  "frontMatter.dashboard.openOnStart": false
+  "files.watcherExclude": {
+    "**/.site/**": true,
+    "**/node_modules/**": true
+  }
 }
