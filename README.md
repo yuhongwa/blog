@@ -1,6 +1,6 @@
 # Yuhongwa Blog
 
-这是一个“内容优先”的 Fuwari 博客仓库。日常写作、模板代码和构建产物彼此隔离，普通创作者不需要进入模板目录改代码。
+这是一个极简、内容优先的学术博客。日常写作、模板代码和构建产物彼此隔离，不需要进入模板目录改代码。
 
 ## 目录
 
@@ -27,13 +27,17 @@ pnpm install
 pnpm dev
 ```
 
-创建文章：
+创建内容：
 
 ```powershell
-pnpm new-post 我的第一篇文章
+pnpm new:post "Article title"
+pnpm new:doc "Document title"
+pnpm new:note "Note title"
 ```
 
-随后编辑 `content/posts/我的第一篇文章.md`。本地预览地址默认为 <http://localhost:4321>。
+随后在 `content/posts/articles`、`content/posts/docs` 或 `content/posts/notes` 中编辑 Markdown 文件。新内容默认是草稿，将 `draft` 改为 `false` 后发布。本地预览地址默认为 <http://localhost:4321>。
+
+文章可自由使用中英文：英文保留 `lang: en`，中文改为 `lang: zh_CN`。
 
 发布文章：
 

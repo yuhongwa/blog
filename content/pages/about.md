@@ -1,5 +1,6 @@
-# 关于我
+# About
 
-你好，我是 Yuhongwa。
+This is a personal notebook for research notes, technical documentation, and longer essays. Posts may be written in English or Chinese.
 
-这个博客用来记录学习、创作与生活中的长期思考。内容会持续补充，这里也会随着我一起成长。
+- [Homepage](https://yuhongwa.github.io)
+- [GitHub](https://github.com/yuhongwa)

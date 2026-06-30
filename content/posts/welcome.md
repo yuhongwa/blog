@@ -1,13 +1,13 @@
 ---
-title: 欢迎来到我的博客
+title: Welcome
 published: 2026-06-30
-description: 这里将记录我的学习、创作与生活。
-tags: [开始]
-category: 随笔
+description: A quiet place for research notes, technical writing, and reflections.
+tags: [meta]
+category: Notes
 draft: false
-lang: zh_CN
+lang: en
 ---
 
-你好，欢迎来到我的博客。
+Welcome. This is a small, evolving archive of my research notes, technical documentation, and longer reflections.
 
-这里使用 Astro、Fuwari 和 Vercel 构建。以后我会在这里记录值得长期保存的想法、经验与作品。
+The site is intentionally simple: Markdown for writing, Git for versioning, and a static build for publishing.

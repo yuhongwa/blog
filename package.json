@@ -10,7 +10,10 @@
     "build": "node scripts/run-site.mjs build",
     "preview": "node scripts/run-site.mjs preview",
     "check": "node scripts/run-site.mjs check",
-    "new-post": "node scripts/new-post.mjs",
+    "new-post": "node scripts/new-post.mjs post",
+    "new:post": "node scripts/new-post.mjs post",
+    "new:doc": "node scripts/new-post.mjs doc",
+    "new:note": "node scripts/new-post.mjs note",
     "template:update": "node scripts/update-template.mjs"
   },
   "engines": {
