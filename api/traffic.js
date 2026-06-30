@@ -1,12 +1,12 @@
 const ANALYTICS_ENDPOINT =
 	"https://api.vercel.com/v1/query/web-analytics/visits/count";
+const PROJECT_ID = "prj_o5HFDBI8sN4jQRrQnl79oh9PkqJp";
+const TEAM_ID = "team_UaTl38wwd4zydar6M4Gio1dk";
 
 export async function GET() {
 	const token = process.env.VERCEL_ANALYTICS_TOKEN;
-	const projectId = process.env.VERCEL_PROJECT_ID;
-	const teamId = process.env.VERCEL_ORG_ID;
 
-	if (!token || !projectId || !teamId) {
+	if (!token) {
 		return Response.json(
 			{ error: "Traffic statistics are not configured." },
 			{ status: 503 },
@@ -14,8 +14,8 @@ export async function GET() {
 	}
 
 	const endpoint = new URL(ANALYTICS_ENDPOINT);
-	endpoint.searchParams.set("projectId", projectId);
-	endpoint.searchParams.set("teamId", teamId);
+	endpoint.searchParams.set("projectId", PROJECT_ID);
+	endpoint.searchParams.set("teamId", TEAM_ID);
 
 	try {
 		const response = await fetch(endpoint, {

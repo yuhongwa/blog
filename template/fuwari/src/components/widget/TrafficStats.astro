@@ -4,9 +4,12 @@
 	aria-label="Site traffic"
 	aria-live="polite"
 >
-	<span data-visitors>—</span> visitors
-	<span aria-hidden="true">·</span>
-	<span data-pageviews>—</span> views
+	<span data-traffic-status>Loading traffic…</span>
+	<span data-traffic-values hidden>
+		<span data-visitors>—</span> visitors
+		<span aria-hidden="true">·</span>
+		<span data-pageviews>—</span> views
+	</span>
 </div>
 
 <script>
@@ -22,16 +25,26 @@
 			.then((data) => {
 				const format = new Intl.NumberFormat();
 				for (const stats of statsBlocks) {
+					const status =
+						stats.querySelector<HTMLElement>("[data-traffic-status]");
+					const values =
+						stats.querySelector<HTMLElement>("[data-traffic-values]");
 					const visitors =
 						stats.querySelector<HTMLElement>("[data-visitors]");
 					const pageviews =
 						stats.querySelector<HTMLElement>("[data-pageviews]");
 					if (visitors) visitors.textContent = format.format(data.visitors);
 					if (pageviews) pageviews.textContent = format.format(data.pageviews);
+					if (status) status.hidden = true;
+					if (values) values.hidden = false;
 				}
 			})
 			.catch(() => {
-				for (const stats of statsBlocks) stats.hidden = true;
+				for (const stats of statsBlocks) {
+					const status =
+						stats.querySelector<HTMLElement>("[data-traffic-status]");
+					if (status) status.textContent = "Traffic unavailable";
+				}
 			});
 	}
 </script>
