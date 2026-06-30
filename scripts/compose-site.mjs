@@ -98,6 +98,9 @@ async function main() {
 	await writeFile(
 		path.join(outputDirectory, "pnpm-workspace.yaml"),
 		[
+			"packages:",
+			"  - '.'",
+			"",
 			"allowBuilds:",
 			"  '@parcel/watcher': true",
 			"  esbuild: true",
