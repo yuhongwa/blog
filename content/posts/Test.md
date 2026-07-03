@@ -10,4 +10,5 @@ lang: zh_CN
 
 Welcome.今天是2026年6月30日 This is a small, evolving archive of my research notes, technical documentation, and longer reflections.
 
+ 我在思考，在博客写点什么才好呢？
 The site is intentionally simple: Markdown for writing, Git for versioning, and a static build for publishing.
