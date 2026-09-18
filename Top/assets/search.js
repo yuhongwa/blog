@@ -38,7 +38,11 @@
         }) || item;
       }
       var targetHref = target.href;
-      targetHref += (targetHref.indexOf("?") === -1 ? "?" : "&") + "highlight=" + encodeURIComponent(query);
+      var hashIndex = targetHref.indexOf("#");
+      var hash = hashIndex === -1 ? "" : targetHref.slice(hashIndex);
+      var baseHref = hashIndex === -1 ? targetHref : targetHref.slice(0, hashIndex);
+      baseHref += (baseHref.indexOf("?") === -1 ? "?" : "&") + "highlight=" + encodeURIComponent(query);
+      var targetHref = baseHref + hash;
       link.href = targetHref;
       var body = document.createElement("span");
       body.className = "entry-body";
