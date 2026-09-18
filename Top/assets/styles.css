@@ -217,6 +217,7 @@ ul {
 
 .home-search h2 { margin-bottom: 4px; }
 .home-search p { color: #746e65; }
+.home-search .search-note { margin-top: 8px; font-size: .9em; }
 
 .block > h2,
 .block-head h2,
