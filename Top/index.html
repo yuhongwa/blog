@@ -8,6 +8,7 @@
   <title>TOP 2025｜年度收录</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./assets/styles.css">
+  <script src="./assets/i18n.js" defer></script>
   <script src="./assets/stats.js" defer></script>
 </head>
 <body>
@@ -17,6 +18,7 @@
     <div class="masthead">
       <a class="brand" href="./index.html">TOP <span>2025</span></a>
       <a class="main-link" href="/">Main 主站 ↗</a>
+      <button class="language-toggle" id="language-toggle" type="button">English</button>
     </div>
     <nav class="section-nav" aria-label="TOP 栏目导航">
       <a class="is-current" href="./index.html">Home</a>
@@ -28,7 +30,7 @@
       <a href="./category.html?id=06">Culture</a>
       <form class="nav-search" action="./search.html" role="search">
         <label class="sr-only" for="nav-search-home">搜索 TOP</label>
-        <input id="nav-search-home" name="q" type="search" placeholder="Search 搜索" aria-label="搜索 TOP">
+        <input id="nav-search-home" name="q" type="search" placeholder="Search 搜索" data-placeholder-zh="Search 搜索" data-placeholder-en="Search" data-aria-zh="搜索 TOP" data-aria-en="Search TOP" aria-label="搜索 TOP">
         <button type="submit" aria-label="提交搜索">⌕</button>
       </form>
       <a href="./about.html">About</a>
@@ -40,9 +42,9 @@
       <div class="intro-grid">
         <div>
           <p class="label">TOP / ANNUAL INDEX</p>
-          <h1>年度收录</h1>
-          <p>一份持续更新的个人索引，记录值得留下的人、项目、研究、文章、事件与作品。</p>
-          <p>条目以事实、出处和收录理由为核心。年度表示整理批次，数量随内容自然增长。</p>
+          <h1 data-zh="年度收录" data-en="Annual index">年度收录</h1>
+          <p data-zh="一份持续更新的个人索引，记录值得留下的人、项目、研究、文章、事件与作品。" data-en="A personal index of people, projects, research, writing, events and works worth keeping.">一份持续更新的个人索引，记录值得留下的人、项目、研究、文章、事件与作品。</p>
+          <p data-zh="条目以事实、出处和收录理由为核心。年度表示整理批次，数量随内容自然增长。" data-en="Each entry keeps its source and a clear reason for inclusion. The year marks the edition, not a limit on the number of entries.">条目以事实、出处和收录理由为核心。年度表示整理批次，数量随内容自然增长。</p>
         </div>
         <div class="year-mark" aria-label="2025 年度收录">
           <span>TOP</span>
@@ -54,61 +56,61 @@
 
     <section class="stats-block" aria-labelledby="stats-title">
       <div class="stats-heading">
-        <h2 id="stats-title">收录统计</h2>
-        <span>自动更新</span>
+        <h2 id="stats-title" data-zh="收录统计" data-en="Index at a glance">收录统计</h2>
+        <span data-zh="自动更新" data-en="Updated automatically">自动更新</span>
       </div>
       <div class="stats-grid">
-        <div><strong id="stat-articles">—</strong><span>文章</span></div>
-        <div><strong id="stat-sections">—</strong><span>主题小节</span></div>
-        <div><strong id="stat-characters">—</strong><span>正文字符</span></div>
-        <div><strong id="stat-links">—</strong><span>链接</span></div>
-        <div><strong id="stat-domains">—</strong><span>来源网站</span></div>
+        <div><strong id="stat-articles">—</strong><span data-zh="文章" data-en="Articles">文章</span></div>
+        <div><strong id="stat-sections">—</strong><span data-zh="主题小节" data-en="Sections">主题小节</span></div>
+        <div><strong id="stat-characters">—</strong><span data-zh="正文字符" data-en="Characters">正文字符</span></div>
+        <div><strong id="stat-links">—</strong><span data-zh="链接" data-en="Links">链接</span></div>
+        <div><strong id="stat-domains">—</strong><span data-zh="来源网站" data-en="Source sites">来源网站</span></div>
       </div>
     </section>
 
     <section class="home-search" aria-labelledby="home-search-title">
-      <h2 id="home-search-title">Search 搜索</h2>
-      <p>搜索文章标题、栏目说明和正文，结果会直接定位到相关内容。</p>
+      <h2 id="home-search-title" data-zh="Search 搜索" data-en="Search">Search 搜索</h2>
+      <p data-zh="搜索文章标题、栏目说明和正文，结果会直接定位到相关内容。" data-en="Search titles, section notes and article text, then jump directly to the relevant passage.">搜索文章标题、栏目说明和正文，结果会直接定位到相关内容。</p>
       <form class="search-form" action="./search.html" role="search">
         <label class="sr-only" for="home-search-input">搜索 TOP</label>
-        <input id="home-search-input" name="q" type="search" placeholder="输入关键词">
-        <button type="submit">搜索</button>
+        <input id="home-search-input" name="q" type="search" placeholder="输入关键词" data-placeholder-zh="输入关键词" data-placeholder-en="Enter a keyword">
+        <button type="submit" data-zh="搜索" data-en="Search">搜索</button>
       </form>
-      <p class="search-note">输入关键词后，结果会显示匹配片段；打开文章时，页面自动跳到对应小节并标出关键词。</p>
+      <p class="search-note" data-zh="输入关键词后，结果会显示匹配片段；打开文章时，页面自动跳到对应小节并标出关键词。" data-en="Results show matching excerpts. Opening an entry jumps to the section and highlights the keyword.">输入关键词后，结果会显示匹配片段；打开文章时，页面自动跳到对应小节并标出关键词。</p>
     </section>
 
     <section class="block" aria-labelledby="nav-title">
-      <h2 id="nav-title">导航</h2>
+      <h2 id="nav-title" data-zh="导航" data-en="Browse">导航</h2>
       <nav class="index-list" aria-label="年度收录栏目">
         <a href="./category.html?id=01">
-          <strong>Hub</strong><span>资源</span><i>→</i>
+          <strong>Hub</strong><span data-zh="资源" data-en="Resources">资源</span><i>→</i>
         </a>
         <a href="./category.html?id=02">
-          <strong>People</strong><span>人物故事</span><i>→</i>
+          <strong>People</strong><span data-zh="人物故事" data-en="People and stories">人物故事</span><i>→</i>
         </a>
         <a href="./category.html?id=03">
-          <strong>Project</strong><span>事情与项目 · 改革 / 论文 / 科研工作</span><i>→</i>
+          <strong>Project</strong><span data-zh="事情与项目 · 改革 / 论文 / 科研工作" data-en="Projects · reform / papers / research">事情与项目 · 改革 / 论文 / 科研工作</span><i>→</i>
         </a>
         <a href="./category.html?id=04">
-          <strong>Post</strong><span>年度帖子</span><i>→</i>
+          <strong>Post</strong><span data-zh="年度帖子" data-en="Posts of the year">年度帖子</span><i>→</i>
         </a>
         <a href="./category.html?id=05">
-          <strong>News</strong><span>年度事件 / 新闻</span><i>→</i>
+          <strong>News</strong><span data-zh="年度事件 / 新闻" data-en="Events / news">年度事件 / 新闻</span><i>→</i>
         </a>
         <a href="./category.html?id=06">
-          <strong>Culture</strong><span>年度影视剧 · 图书 · 音乐</span><i>→</i>
+          <strong>Culture</strong><span data-zh="年度影视剧 · 图书 · 音乐" data-en="Film · books · music">年度影视剧 · 图书 · 音乐</span><i>→</i>
         </a>
       </nav>
     </section>
 
     <section class="block" aria-labelledby="principles-title">
-      <h2 id="principles-title">收录原则</h2>
+      <h2 id="principles-title" data-zh="收录原则" data-en="Selection principles">收录原则</h2>
       <ol class="plain-list">
-        <li><span>01</span><p><strong>具体。</strong>写清对象、事件和作品，不用空泛评价代替内容。</p></li>
-        <li><span>02</span><p><strong>可查。</strong>姓名、机构、时间和链接尽量回到稳定来源。</p></li>
-        <li><span>03</span><p><strong>有取舍。</strong>收录理由清楚，条目数量随内容自然形成。</p></li>
-        <li><span>04</span><p><strong>归类清楚。</strong>人物、项目和作品各有主条目，关联内容在正文中展开。</p></li>
-        <li><span>05</span><p><strong>注明时间。</strong>年度是收录批次，跨年内容写明实际发生或发布时间。</p></li>
+        <li><span>01</span><p><strong data-zh="具体。" data-en="Specific.">具体。</strong><span data-zh="写清对象、事件和作品，不用空泛评价代替内容。" data-en="Name the people, events and works; let the material carry the judgment.">写清对象、事件和作品，不用空泛评价代替内容。</span></p></li>
+        <li><span>02</span><p><strong data-zh="可查。" data-en="Verifiable.">可查。</strong><span data-zh="姓名、机构、时间和链接尽量回到稳定来源。" data-en="Keep names, institutions, dates and links traceable to stable sources.">姓名、机构、时间和链接尽量回到稳定来源。</span></p></li>
+        <li><span>03</span><p><strong data-zh="有取舍。" data-en="Curated.">有取舍。</strong><span data-zh="收录理由清楚，条目数量随内容自然形成。" data-en="A clear reason for inclusion matters more than a fixed quota.">收录理由清楚，条目数量随内容自然形成。</span></p></li>
+        <li><span>04</span><p><strong data-zh="归类清楚。" data-en="Well grouped.">归类清楚。</strong><span data-zh="人物、项目和作品各有主条目，关联内容在正文中展开。" data-en="People, projects and works have distinct homes; related material stays with the main entry.">人物、项目和作品各有主条目，关联内容在正文中展开。</span></p></li>
+        <li><span>05</span><p><strong data-zh="注明时间。" data-en="Time-stamped.">注明时间。</strong><span data-zh="年度是收录批次，跨年内容写明实际发生或发布时间。" data-en="The year marks the edition; older material keeps its actual date.">年度是收录批次，跨年内容写明实际发生或发布时间。</span></p></li>
       </ol>
     </section>
 
@@ -117,6 +119,8 @@
   <footer class="footer shell">
     <span>TOP 2025</span>
     <a href="./about.html">介绍与更新 →</a>
+    <span class="site-stats" aria-label="网站访问统计"><span data-zh="本站访问" data-en="Site views">本站访问</span> <span id="busuanzi_value_site_pv">—</span> · <span data-zh="本页访问" data-en="Page views">本页访问</span> <span id="busuanzi_value_page_pv">—</span></span>
   </footer>
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>

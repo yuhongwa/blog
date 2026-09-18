@@ -91,6 +91,68 @@ const articles = [
 	},
 ];
 
+const englishMeta = {
+	"hub-method.html": {
+		title: "TOP Hub 01: Methodology",
+		description: "Learning, research, writing and knowledge management.",
+		summary: "A working index of methods for learning, research, writing and personal knowledge management. The original links remain available for direct reading."
+	},
+	"hub-tools.html": {
+		title: "TOP Hub 02: Tools",
+		description: "Tools for research, writing, visualization and programming.",
+		summary: "A practical collection of tools for research, writing, visual work and programming, organised by the task they help solve."
+	},
+	"hub-opportunities.html": {
+		title: "TOP Hub 03: Opportunities",
+		description: "Admissions, internships, joint training and careers.",
+		summary: "A collection of opportunities and pathways: admissions, internships, joint training, research positions and professional development."
+	},
+	"hub-science.html": {
+		title: "TOP Hub 04: Science and technical notes",
+		description: "Bioinformatics, machine learning and technical references.",
+		summary: "Reference material for bioinformatics, machine learning and technical practice, kept as an entry point for further study."
+	},
+	"hub-community.html": {
+		title: "TOP Hub 05: Communities and ideas",
+		description: "Communities, courses and observations on research culture.",
+		summary: "Communities, courses and observations on research culture, with source links preserved for context."
+	},
+	"people-2025.html": {
+		title: "People",
+		description: "Athletes, actors, researchers, engineers, writers and knowledge creators.",
+		summary: "People noticed during the 2025 edition: their work, choices and the concrete influence they leave behind."
+	},
+	"project-2025.html": {
+		title: "TOP2025 Projects",
+		description: "Public programmes, education reform, personal engineering and long-term practice.",
+		summary: "Projects and public efforts that connect education, research, engineering and long-term practice."
+	},
+	"top2025-posts.html": {
+		title: "TOP2025 Posts",
+		description: "Doctoral growth and research training: applications, skills and graduation reflections.",
+		summary: "Long-form posts on doctoral applications, research ability, training, setbacks and the decisions behind a research life."
+	},
+	"top2025-nerd-fun.html": {
+		title: "TOP2025 Nerd Fun",
+		description: "Humour across research, engineering, doctoral life and the internet.",
+		summary: "A lighter collection of research, engineering, doctoral-life and internet culture moments."
+	},
+	"news-2025.html": {
+		title: "TOP2025 Events and news",
+		description: "Events, debates and public discussions worth revisiting.",
+		summary: "Events and debates that changed the frame of a question, invited public discussion or remained worth revisiting."
+	},
+	"culture-2025.html": {
+		title: "TOP2025 Culture",
+		description: "The year’s selection of music, books and screen works.",
+		summary: "Music, books, films and series gathered as a personal cultural index. The original work titles and source links are retained."
+	}
+};
+
+function englishArticleBody(meta, originalHtml) {
+	return `<div class="english-summary"><p>${escapeHtml(meta.summary)}</p><p class="english-note">This English edition is an editorial translation of the index. Original titles, sources and links are preserved below.</p></div><details class="source-original"><summary>Show the original Chinese entry</summary><div class="source-original-body">${originalHtml}</div></details>`;
+}
+
 function assertInsideRepository(candidate) {
 	const relative = path.relative(repositoryRoot, candidate);
 	if (relative.startsWith("..") || path.isAbsolute(relative)) {
@@ -159,6 +221,12 @@ async function main() {
 
 		const source = await readFile(sourcePath, "utf8");
 		const parsed = parseArticle(source, article.source);
+		const meta = englishMeta[article.output] || {
+			title: article.output.replace(/\.html$/, ""),
+			description: article.description,
+			summary: "This entry is part of the TOP annual index."
+		};
+		const renderedBody = markdown.render(parsed.body).trim();
 		totalCharacters += parsed.body.replace(/\s/g, "").length;
 		const links = parsed.body.match(/https?:\/\/[^\s)]+/g) || [];
 		totalLinks += links.length;
@@ -171,6 +239,9 @@ async function main() {
 			title: parsed.title,
 			description: article.description,
 			category: article.categoryName,
+			titleEn: meta.title,
+			descriptionEn: meta.description,
+			textEn: meta.summary,
 			href: `./articles/${article.output}`,
 			text: parsed.body.replace(/[#>*_`\[\]()]/g, " ").replace(/\s+/g, " ").trim(),
 		});
@@ -184,6 +255,9 @@ async function main() {
 				title: match[2].trim(),
 				description: article.description,
 				category: article.categoryName,
+				titleEn: `Section ${sectionIndex + 1}`,
+				descriptionEn: meta.description,
+				textEn: meta.summary,
 				href: `./articles/${article.output}#section-${sectionIndex}`,
 				text: parsed.body.slice(start, end).replace(/[#>*_`\[\]()]/g, " ").replace(/\s+/g, " ").trim(),
 			});
@@ -191,7 +265,9 @@ async function main() {
 		headingIndex = 0;
 		const replacements = {
 			"{{DESCRIPTION}}": escapeHtml(article.description),
+			"{{DESCRIPTION_EN}}": escapeHtml(meta.description),
 			"{{ARTICLE_TITLE}}": escapeHtml(parsed.title),
+			"{{ARTICLE_TITLE_EN}}": escapeHtml(meta.title),
 			"{{HUB_CLASS}}": article.categoryId === "01" ? "is-current" : "",
 			"{{PEOPLE_CLASS}}": article.categoryId === "02" ? "is-current" : "",
 			"{{PROJECT_CLASS}}": article.categoryId === "03" ? "is-current" : "",
@@ -200,7 +276,9 @@ async function main() {
 			"{{CULTURE_CLASS}}": article.categoryId === "06" ? "is-current" : "",
 			"{{CATEGORY_ID}}": article.categoryId,
 			"{{CATEGORY_NAME}}": escapeHtml(article.categoryName),
-			"{{ARTICLE_BODY}}": markdown.render(parsed.body).trim(),
+			"{{CATEGORY_NAME_EN}}": escapeHtml((article.categoryName || "").split(" /")[0]),
+			"{{ARTICLE_BODY}}": renderedBody,
+			"{{ARTICLE_BODY_EN}}": englishArticleBody(meta, renderedBody),
 		};
 
 		let page = template;

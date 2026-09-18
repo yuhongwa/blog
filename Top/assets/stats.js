@@ -1,4 +1,4 @@
-window.TOP_STATS = {"articles":11,"sections":161,"characters":87807,"links":660,"domains":80};
+window.TOP_STATS = {"articles":11,"sections":200,"characters":56473,"links":657,"domains":80};
 (function () {
   function renderStats() {
     var stats = window.TOP_STATS;

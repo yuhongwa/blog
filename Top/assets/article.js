@@ -1,7 +1,7 @@
 (function () {
   "use strict";
   var query = new URLSearchParams(window.location.search).get("highlight");
-  var root = document.querySelector(".article-body");
+  var root = document.querySelector(window.TOP_LANGUAGE === "en" ? ".article-body-en" : ".article-body-zh") || document.querySelector(".article-body");
   if (!query || !root) return;
 
   var escaped = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
