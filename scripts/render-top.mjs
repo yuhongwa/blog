@@ -147,6 +147,9 @@ async function main() {
 
 	await mkdir(outputDirectory, { recursive: true });
 	const searchEntries = [];
+	let totalCharacters = 0;
+	let totalLinks = 0;
+	const domains = new Set();
 
 	for (const article of articles) {
 		const sourcePath = path.join(repositoryRoot, "content", "posts", article.source);
@@ -156,6 +159,12 @@ async function main() {
 
 		const source = await readFile(sourcePath, "utf8");
 		const parsed = parseArticle(source, article.source);
+		totalCharacters += parsed.body.replace(/\s/g, "").length;
+		const links = parsed.body.match(/https?:\/\/[^\s)]+/g) || [];
+		totalLinks += links.length;
+		links.forEach((link) => {
+			try { domains.add(new URL(link).hostname.replace(/^www\./, "")); } catch {}
+		});
 		searchEntries.push({
 			kind: "article",
 			article: article.output,
@@ -210,6 +219,35 @@ async function main() {
 	const searchIndexPath = path.join(repositoryRoot, "Top", "assets", "search-index.js");
 	assertInsideRepository(searchIndexPath);
 	await writeFile(searchIndexPath, `window.TOP_SEARCH_INDEX = ${JSON.stringify(searchEntries)};\n`, "utf8");
+	const statsPath = path.join(repositoryRoot, "Top", "assets", "stats.js");
+	assertInsideRepository(statsPath);
+	await writeFile(statsPath, `window.TOP_STATS = ${JSON.stringify({
+		articles: articles.length,
+		sections: searchEntries.filter((entry) => entry.kind === "section").length,
+		characters: totalCharacters,
+		links: totalLinks,
+		domains: domains.size,
+	})};
+(function () {
+  function renderStats() {
+    var stats = window.TOP_STATS;
+    if (!stats) return;
+    var values = {
+      "stat-articles": stats.articles,
+      "stat-sections": stats.sections,
+      "stat-characters": stats.characters.toLocaleString("zh-CN"),
+      "stat-links": stats.links.toLocaleString("zh-CN"),
+      "stat-domains": stats.domains
+    };
+    Object.keys(values).forEach(function (id) {
+      var node = document.getElementById(id);
+      if (node) node.textContent = values[id];
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderStats);
+  else renderStats();
+})();
+`, "utf8");
 }
 
 await main();
