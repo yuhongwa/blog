@@ -12,6 +12,9 @@ node_modules/
 !.env.example
 .vercel/
 
+# Local archives and creator notes (never publish or commit)
+.local/
+
 # Logs and editor files
 *.log
 .DS_Store

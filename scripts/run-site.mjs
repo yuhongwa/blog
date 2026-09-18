@@ -50,6 +50,7 @@ function runPnpm(arguments_) {
 try {
 	await run(process.execPath, [path.join(scriptsDirectory, "compose-site.mjs")]);
 	await runPnpm(["--dir", generatedSite, "install", "--frozen-lockfile"]);
+	await run(process.execPath, [path.join(scriptsDirectory, "render-top.mjs")]);
 	await runPnpm(["--dir", generatedSite, "run", command, ...extraArguments]);
 } catch (error) {
 	console.error(error instanceof Error ? error.message : error);

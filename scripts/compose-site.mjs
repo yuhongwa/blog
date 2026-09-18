@@ -6,6 +6,7 @@ const scriptsDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptsDirectory, "..");
 const templateDirectory = path.join(repositoryRoot, "template", "fuwari");
 const contentDirectory = path.join(repositoryRoot, "content");
+const topDirectory = path.join(repositoryRoot, "Top");
 const outputDirectory = path.join(repositoryRoot, ".site");
 
 function assertInsideRepository(candidate) {
@@ -51,7 +52,7 @@ async function configureSiteUrl() {
 }
 
 async function main() {
-	for (const directory of [templateDirectory, contentDirectory, outputDirectory]) {
+	for (const directory of [templateDirectory, contentDirectory, topDirectory, outputDirectory]) {
 		assertInsideRepository(directory);
 	}
 
@@ -90,6 +91,19 @@ async function main() {
 		path.join(outputDirectory, "public"),
 		{ recursive: true, force: true },
 	);
+
+	await replaceDirectory(
+		topDirectory,
+		path.join(outputDirectory, "public", "top"),
+	);
+
+	// These files are build inputs and documentation, not public pages.
+	await rm(path.join(outputDirectory, "public", "top", "article-template.html"), {
+		force: true,
+	});
+	await rm(path.join(outputDirectory, "public", "top", "README.md"), {
+		force: true,
+	});
 
 	await configureSiteUrl();
 

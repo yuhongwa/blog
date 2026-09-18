@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta name="theme-color" content="#ffffff">
+  <title>{{ARTICLE_TITLE}}｜TOP 2025</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script src="../assets/article.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="site-header shell">
+    <div class="masthead">
+      <a class="brand" href="../index.html">TOP <span>2025</span></a>
+      <a class="main-link" href="/">Main 主站 ↗</a>
+    </div>
+    <nav class="section-nav" aria-label="TOP 栏目导航">
+      <a href="../index.html">Home</a>
+      <a class="{{HUB_CLASS}}" href="../category.html?id=01">Hub</a>
+      <a class="{{PEOPLE_CLASS}}" href="../category.html?id=02">People</a>
+      <a class="{{PROJECT_CLASS}}" href="../category.html?id=03">Project</a>
+      <a class="{{POST_CLASS}}" href="../category.html?id=04">Post</a>
+      <a class="{{NEWS_CLASS}}" href="../category.html?id=05">News</a>
+      <a class="{{CULTURE_CLASS}}" href="../category.html?id=06">Culture</a>
+      <form class="nav-search" action="../search.html" role="search">
+        <label class="sr-only" for="nav-search-article">搜索 TOP</label>
+        <input id="nav-search-article" name="q" type="search" placeholder="Search" aria-label="搜索 TOP">
+        <button type="submit" aria-label="提交搜索">⌕</button>
+      </form>
+      <a href="../about.html">About</a>
+    </nav>
+  </header>
+
+  <main id="main" class="shell article-main">
+    <header class="article-head">
+      <p class="label">{{CATEGORY_NAME}}</p>
+      <h1>{{ARTICLE_TITLE}}</h1>
+      <p>{{DESCRIPTION}}</p>
+    </header>
+
+    <article class="article-body">
+{{ARTICLE_BODY}}
+    </article>
+
+    <nav class="article-end" aria-label="文章导航">
+      <a href="../category.html?id={{CATEGORY_ID}}">← 返回 {{CATEGORY_NAME}}</a>
+      <a href="../index.html">TOP 首页 →</a>
+    </nav>
+  </main>
+
+  <footer class="footer shell">
+    <span>TOP 2025</span>
+    <a href="../about.html">介绍与更新 →</a>
+  </footer>
+</body>
+</html>

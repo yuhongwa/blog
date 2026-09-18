@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="搜索 TOP 年度收录。">
+  <title>搜索｜TOP 2025</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script src="./assets/search-index.js" defer></script>
+  <script src="./assets/search.js" defer></script>
+</head>
+<body data-page="search">
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header shell">
+    <div class="masthead">
+      <a class="brand" href="./index.html">TOP <span>2025</span></a>
+      <a class="main-link" href="/">Main 主站 ↗</a>
+    </div>
+    <nav class="section-nav" aria-label="TOP 栏目导航">
+      <a href="./index.html">Home</a>
+      <a href="./category.html?id=01">Hub</a>
+      <a href="./category.html?id=02">People</a>
+      <a href="./category.html?id=03">Project</a>
+      <a href="./category.html?id=04">Post</a>
+      <a href="./category.html?id=05">News</a>
+      <a href="./category.html?id=06">Culture</a>
+      <form class="nav-search" action="./search.html" role="search">
+        <label class="sr-only" for="nav-search-page">搜索 TOP</label>
+        <input id="nav-search-page" name="q" type="search" placeholder="Search" aria-label="搜索 TOP">
+        <button type="submit" aria-label="提交搜索">⌕</button>
+      </form>
+      <a href="./about.html">About</a>
+    </nav>
+  </header>
+
+  <main id="main" class="shell search-main">
+    <header class="category-head">
+      <p class="label">SEARCH / TOP 2025</p>
+      <h1>检索</h1>
+      <p>输入关键词，搜索文章标题、栏目说明和正文。</p>
+    </header>
+    <form class="search-form" id="search-form" role="search">
+      <label class="sr-only" for="search-input">搜索 TOP</label>
+      <input id="search-input" name="q" type="search" placeholder="搜索人物、项目、论文、帖子……" autocomplete="off">
+      <button type="submit">搜索</button>
+    </form>
+    <div class="search-options" aria-label="检索选项">
+      <label>栏目
+        <select id="search-category">
+          <option value="">全部</option>
+          <option value="Hub">Hub / 资源</option>
+          <option value="People">People / 人物故事</option>
+          <option value="Project">Project / 事情与项目</option>
+          <option value="Post">Post / 年度帖子</option>
+          <option value="News">News / 年度事件与新闻</option>
+          <option value="Culture">Culture / 年度文化</option>
+        </select>
+      </label>
+      <label>范围
+        <select id="search-scope">
+          <option value="all">标题与正文</option>
+          <option value="title">只看标题</option>
+          <option value="body">只看正文</option>
+        </select>
+      </label>
+    </div>
+    <p class="search-status" id="search-status">输入关键词开始检索。</p>
+    <section class="entry-list search-results" id="search-results" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer shell">
+    <a href="./index.html">← TOP 首页</a>
+    <a href="./about.html">介绍与更新 →</a>
+  </footer>
+</body>
+</html>

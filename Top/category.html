@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="TOP 年度收录栏目。">
+  <meta name="theme-color" content="#ffffff">
+  <title>栏目｜TOP 2025</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script src="./assets/catalog.js" defer></script>
+  <script src="./assets/app.js" defer></script>
+</head>
+<body data-page="category">
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="site-header shell">
+    <div class="masthead">
+      <a class="brand" href="./index.html">TOP <span>2025</span></a>
+      <a class="main-link" href="/">Main 主站 ↗</a>
+    </div>
+    <nav class="section-nav" aria-label="TOP 栏目导航">
+      <a href="./index.html">Home</a>
+      <a data-category-id="01" href="./category.html?id=01">Hub</a>
+      <a data-category-id="02" href="./category.html?id=02">People</a>
+      <a data-category-id="03" href="./category.html?id=03">Project</a>
+      <a data-category-id="04" href="./category.html?id=04">Post</a>
+      <a data-category-id="05" href="./category.html?id=05">News</a>
+      <a data-category-id="06" href="./category.html?id=06">Culture</a>
+      <form class="nav-search" action="./search.html" role="search">
+        <label class="sr-only" for="nav-search-category">搜索 TOP</label>
+        <input id="nav-search-category" name="q" type="search" placeholder="Search" aria-label="搜索 TOP">
+        <button type="submit" aria-label="提交搜索">⌕</button>
+      </form>
+      <a href="./about.html">About</a>
+    </nav>
+  </header>
+
+  <main id="main" class="shell">
+    <header class="category-head">
+      <p class="label" id="category-kicker">HUB</p>
+      <div class="category-title">
+        <h1 id="category-title">资源</h1>
+      </div>
+      <p id="category-intro"></p>
+    </header>
+
+    <section class="block" aria-labelledby="entries-title">
+      <div class="block-head">
+        <h2 id="entries-title">收录</h2>
+        <span id="entry-count"></span>
+      </div>
+      <div class="entry-list" id="entry-list"></div>
+    </section>
+
+    <nav class="block" aria-label="切换栏目">
+      <h2>其他栏目</h2>
+      <div class="section-links" id="category-switcher-list"></div>
+    </nav>
+  </main>
+
+  <footer class="footer shell">
+    <a href="./index.html">← TOP 首页</a>
+    <a href="./about.html">介绍与更新 →</a>
+  </footer>
+</body>
+</html>

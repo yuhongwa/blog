@@ -43,6 +43,11 @@ export const navBarConfig: NavBarConfig = {
 	links: [
 		LinkPreset.Home,
 		LinkPreset.Archive,
+		{
+			name: "TOP",
+			url: "/top/index.html",
+			external: false,
+		},
 		LinkPreset.About,
 		{
 			name: "Homepage",
